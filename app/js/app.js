@@ -19,6 +19,3 @@ angular.module("cm", [ "ui.router", "ui.bootstrap", "services"]).run(function($r
     };
 });
 
-angular.module("cm").controller('Hello', ['$scope', '$timeout', 'MyService', function ($scope, $timeout, MyService) {
-    MyService.myServiceFunction();
-}]);

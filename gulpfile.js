@@ -8,6 +8,8 @@ var preprocess = require('gulp-preprocess');
 var connect = require('gulp-connect');
 var mainBowerFiles = require('main-bower-files');
 var ngAnnotate = require('gulp-ng-annotate');
+var inject = require('gulp-inject');
+var series = require('stream-series');
 
 gulp.task('server', function() {
     connect.server({
@@ -23,7 +25,7 @@ gulp.task('minify', function() {
         .pipe(gulp.dest('dist'));
 });
 
-gulp.task('concat-scripts', function() {
+gulp.task('scripts', function() {
     return gulp.src(['vendor/js/angular.js', 'vendor/js/*.js', 'app/js/*.js', 'app/js/**/*.js'])
         .pipe(ngAnnotate())
         .pipe(concat('all.js'))
@@ -31,7 +33,7 @@ gulp.task('concat-scripts', function() {
 });
 
 gulp.task('watch', function() {
-    gulp.watch('app/js/*.js', ['concat-scripts', 'minify']);
+    gulp.watch(['app/js/*.js', 'app/js/**/*.js'], ['index']);
 });
 
 gulp.task('pcg_mod', function() {
@@ -43,7 +45,7 @@ gulp.task('pcg_mod', function() {
 });
 
 gulp.task('html', function() {
-    gulp.src('app/index.html')
+    return gulp.src('app/index.html')
         .pipe(preprocess({context: {NODE_ENV: 'production', DEBUG: false}}))//To set environment variables in-line,
         .pipe(gulp.dest('./dist/'))
         .pipe(gulp.dest(''))
@@ -54,4 +56,14 @@ gulp.task('bower', function() {
         .pipe(gulp.dest('vendor/js'));
 });
 
-gulp.task('default', ['server', 'watch']);
+gulp.task('index', ['html', 'bower'], function () {
+    var angular = gulp.src(['vendor/js/angular.js'], {read: false});
+    var vendorStream = gulp.src(['vendor/js/*.js', '!vendor/js/angular.js'], {read: false});
+    var appStream = gulp.src(['app/js/*.js', 'app/js/**/*.js'], {read: false});
+
+    return gulp.src('index.html')
+        .pipe(inject(series(angular, vendorStream, appStream)))
+        .pipe(gulp.dest(''));
+});
+
+gulp.task('default', ['index', 'server', 'watch']);

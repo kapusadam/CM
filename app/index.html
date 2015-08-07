@@ -8,18 +8,18 @@
     <div ng-controller="Hello">
     </div>
     <!-- @ifdef DEBUG -->
-    <h1>Debugging modee - <!-- @echo RELEASE_TAG --> </h1>
+        <h1>Debugging modee - <!-- @echo RELEASE_TAG --> </h1>
     <!-- @endif -->
     <p>
         <!-- @include welcome_message.txt -->
     </p>
     <!-- @echo NODE_ENV -->
     <!-- @ifdef DEBUG -->
-    <script src="dist/all.js"></script>
+        <!-- inject:js -->
+        <!-- endinject -->
     <!-- @endif -->
     <!-- @ifndef  DEBUG -->
-    <script src="dist/all.min.js"></script>
+        <script src="dist/all.min.js"></script>
     <!-- @endif -->
-
 </body>
 </html>
