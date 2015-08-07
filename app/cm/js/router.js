@@ -11,22 +11,22 @@ cm.config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('login', {
             url: "/login",
-            templateUrl: "app/views/partials/login.html",
+            templateUrl: "app/cm/views/partials/login.html",
             controller: "LoginController"
         })
         .state('register', {
             url: "/register",
-            templateUrl: "app/views/partials/register.html",
+            templateUrl: "app/cm/views/partials/register.html",
             controller: "RegisterController"
         })
         .state('main', {
             url: "/main",
-            templateUrl: "app/views/partials/main.html",
+            templateUrl: "app/cm/views/partials/main.html",
             controller: "MainController"
         })
         .state('main.userlist', {
             url: "/list",
-            templateUrl: "app/views/partials/main.userlist.html",
+            templateUrl: "app/cm/views/partials/main.userlist.html",
             controller: "UserController"
         });
 });

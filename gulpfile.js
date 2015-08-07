@@ -18,7 +18,7 @@ gulp.task('server', function() {
 });
 
 gulp.task('minify', function() {
-     return gulp.src(['vendor/js/angular.js', 'vendor/js/*.js', 'app/js/*.js', 'app/js/**/*.js'])
+     return gulp.src(['vendor/js/angular.js', 'vendor/js/*.js', 'app/**/js/*.js', 'app/**/js/**/*.js'])
         .pipe(ngAnnotate())
         .pipe(concat('all.min.js'))
         .pipe(uglify())
@@ -26,14 +26,14 @@ gulp.task('minify', function() {
 });
 
 gulp.task('scripts', function() {
-    return gulp.src(['vendor/js/angular.js', 'vendor/js/*.js', 'app/js/*.js', 'app/js/**/*.js'])
+    return gulp.src(['vendor/js/angular.js', 'vendor/js/*.js', 'app/**/js/*.js', 'app/**/js/**/*.js'])
         .pipe(ngAnnotate())
         .pipe(concat('all.js'))
         .pipe(gulp.dest('dist'));
 });
 
 gulp.task('watch', function() {
-    gulp.watch(['app/js/*.js', 'app/js/**/*.js', 'app/*.html', 'app/views/**/*.html'], ['index']);
+    gulp.watch(['app/**/js/*.js', 'app/**/js/**/*.js', 'app/*.html', 'app/**/views/**/*.html'], ['index']);
 });
 
 gulp.task('pcg_mod', function() {
@@ -59,7 +59,7 @@ gulp.task('bower', function() {
 gulp.task('index', ['html', 'bower'], function () {
     var angular = gulp.src(['vendor/js/angular.js'], {read: false});
     var vendorStream = gulp.src(['vendor/js/*.js', '!vendor/js/angular.js'], {read: false});
-    var appStream = gulp.src(['app/js/*.js', 'app/js/**/*.js'], {read: false});
+    var appStream = gulp.src(['app//**js/*.js', 'app/**/js/**/*.js'], {read: false});
 
     return gulp.src('index.html')
         .pipe(inject(series(angular, vendorStream, appStream)))
