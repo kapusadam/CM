@@ -4,12 +4,12 @@
 var services = angular.module('services',[]);
 services.service('MyService', function(){
     this.myServiceFunction = function() {
-        console.log("SERVICE HIVAS!!")
+        console.log("SERVICE HIVAS!!");
     };
 });
 
-CM = angular.module("cm", ["ui.router", "ui.bootstrap", "services"])
-    CM.run(function($rootScope) {
+cm = angular.module("cm", ["ui.router", "ui.bootstrap", "services"])
+    cm.run(function($rootScope) {
     // adds some basic utilities to the $rootScope for debugging purposes
 
     $rootScope.log = function(thing) {

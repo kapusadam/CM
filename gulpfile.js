@@ -46,7 +46,7 @@ gulp.task('pcg_mod', function() {
 
 gulp.task('html', function() {
     return gulp.src('app/index.html')
-        .pipe(preprocess({context: {NODE_ENV: 'production', DEBUG: false}}))//To set environment variables in-line,
+        .pipe(preprocess({context: {NODE_ENV: 'production', DEBUG: true}}))//To set environment variables in-line,
         .pipe(gulp.dest('./dist/'))
         .pipe(gulp.dest(''))
 });
@@ -67,3 +67,5 @@ gulp.task('index', ['html', 'bower'], function () {
 });
 
 gulp.task('default', ['index', 'server', 'watch']);
+
+gulp.task('run', ['html', 'minify', 'server']);
