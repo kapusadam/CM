@@ -3,4 +3,5 @@ node_modules/
 dist/
 vendor/
 .idea
-index.html
+/index.html
+dist/index.html
