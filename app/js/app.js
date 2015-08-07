@@ -7,7 +7,9 @@ services.service('MyService', function(){
         console.log("SERVICE HIVAS!!")
     };
 });
-angular.module("cm", [ "ui.router", "ui.bootstrap", "services"]).run(function($rootScope) {
+
+CM = angular.module("cm", ["ui.router", "ui.bootstrap", "services"])
+    CM.run(function($rootScope) {
     // adds some basic utilities to the $rootScope for debugging purposes
 
     $rootScope.log = function(thing) {

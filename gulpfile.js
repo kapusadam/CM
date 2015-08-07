@@ -33,7 +33,7 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('watch', function() {
-    gulp.watch(['app/js/*.js', 'app/js/**/*.js'], ['index']);
+    gulp.watch(['app/js/*.js', 'app/js/**/*.js', 'app/*.html', 'app/views/**/*.html'], ['index']);
 });
 
 gulp.task('pcg_mod', function() {
