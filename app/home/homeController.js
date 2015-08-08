@@ -3,16 +3,18 @@
  */
 
 angular.module("cm.home")
-    //.config(function($stateProvider, $urlRouterProvider) {
-    //    $stateProvider
-    //        .state('cm.home', {
-    //            url: "/home",
-    //            templateUrl: "app/home/home.html",
-    //            controller: "HomeController"
-    //        })
-    //})
+    .config(function($stateProvider, $urlRouterProvider) {
+        $stateProvider
+            .state('home', {
+                url: "/home",
+                templateUrl: "app/home/home.html",
+                controller: "HomeController"
+            })
+    })
 
-    .controller('HomeController', ['$scope', function ($scope) {
-    alert(1);
+    .controller('HomeController', ['$scope', 'MyService', function ($scope, MyService) {
+        MyService.myServiceFunction("main page");
     $scope.title = "Main page";
 }]);
+
+

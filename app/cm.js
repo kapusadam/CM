@@ -17,25 +17,22 @@ cm.run(function($rootScope) {
 
 cm.config(function($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise("/");
+    $urlRouterProvider.otherwise("/home");
 
     $stateProvider
-        .state('cm.home', {
-            url: "/home",
-            templateUrl: "app/home/home.html",
-            controller: function(){
-                alert("dsa")
-            }
+        //.state('home', {
+        //    url: "/home",
+        //    templateUrl: "app/home/home.html",
+        //    controller: "HomeController"
+        //})
+        //.state('home.list', {
+        //    url: "/list",
+        //    template: "<div>List</div>",
+        //    controller: "UserController"
+        //
+        //})
 
-        })
 
-    .state('cm', {
-        url: "/"
-        //controller: function($state) {
-        //    console.log("X")
-        //    //$state.go(".home")
-        //}
-    })
 
 });
 

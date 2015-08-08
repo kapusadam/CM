@@ -3,7 +3,7 @@
  */
 
 angular.module('cm.common',[]).service('MyService', function(){
-    this.myServiceFunction = function() {
-        console.log("SERVICE HIVAS!!");
+    this.myServiceFunction = function(text) {
+        console.log("SERVICE HIVAS!!"+ text);
     };
 });
