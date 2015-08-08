@@ -6,9 +6,8 @@
 </head>
 <body ng-app="cm">
     <div ui-view></div>
+    <a ui-sref="cm.home">State 1</a>
 
-    <div ng-controller="Hello">
-    </div>
     <!-- @ifdef DEBUG -->
         <h1>Debugging modee - <!-- @echo RELEASE_TAG --> </h1>
     <!-- @endif -->
