@@ -4,10 +4,10 @@
 angular.module("cm.home", ["ui.router", "ui.bootstrap", "cm.common"]);
 angular.module("cm.home").config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
-    .state('home.list', {
-        url: "/list",
-        template: "<div>List</div>",
-        controller: "UserController"
+        .state('home.list', {
+            url: "/list",
+            template: "<div>List</div>",
+            controller: "UserController"
 
-    });
+        });
 })
